@@ -6,7 +6,10 @@ import org.javaacademy.car_sale_announcement.entity.Announcement;
 import org.javaacademy.car_sale_announcement.repository.AnnouncementRepository;
 import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -22,6 +25,15 @@ public class AnnouncementService {
         }
         return announcementRepository.add(newAnnouncement);
     }
+
+    public List<Announcement> getAnnouncementsByDate(LocalDate date) {
+        return announcementRepository.getAnnouncementsByDate(date);
+    }
+
+    public boolean deleteByKey(String key) {
+        return announcementRepository.deleteByKey(key);
+    }
+
 
     private Announcement convertToEntity(AnnouncementDtoRq announcementDtoRq) {
         return new Announcement(
@@ -46,4 +58,7 @@ public class AnnouncementService {
         return str;
     }
 
+    public Optional<Announcement> getAnnouncementByKey(String key) {
+        return announcementRepository.getAnnouncementByKey(key);
+    }
 }
