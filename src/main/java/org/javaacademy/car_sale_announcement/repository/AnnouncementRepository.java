@@ -38,8 +38,22 @@ public class AnnouncementRepository {
 
     public List<Announcement> getAnnouncementsByFilters(Filter filter) {
         return announcements.values().stream()
-                .filter(announcement -> announcement.equalsCarFilters(filter))
+                .filter(announcement -> equalsFilters(filter, announcement))
                 .toList();
+    }
+
+    private boolean equalsFilters(Filter filters, Announcement ann) {
+        return equalsWithNull(ann.getNameBrand(), filters.getNameBrand())
+                && equalsWithNull(ann.getPrice().toString(), filters.getPrice())
+                && equalsWithNull(ann.getColor().getColor(), filters.getColor())
+                && equalsWithNull(ann.getModel(), filters.getModel());
+    }
+
+    private boolean equalsWithNull(String param, String filter) {
+        if (filter == null) {
+            return true;
+        }
+        return param.equalsIgnoreCase(filter);
     }
 }
 

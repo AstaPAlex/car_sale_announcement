@@ -1,14 +1,21 @@
 package org.javaacademy.car_sale_announcement.entity;
 
-import lombok.Data;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.lang.NonNull;
 
-@RequiredArgsConstructor
+@NoArgsConstructor
 @Getter
+@Setter
 public class Filter {
-    private final String nameBrand;
-    private final String color;
-    private final String price;
-    private final String model;
+    @NonNull
+    private String nameBrand;
+    @NonNull
+    private String color;
+    @NonNull
+    private String price;
+    @NonNull
+    private String model;
+
 }

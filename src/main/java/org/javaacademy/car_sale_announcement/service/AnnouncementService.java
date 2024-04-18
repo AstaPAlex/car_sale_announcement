@@ -10,7 +10,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -18,12 +17,7 @@ public class AnnouncementService {
     private final AnnouncementRepository announcementRepository;
 
     public Announcement createAnnouncement(AnnouncementDtoRq announcementDtoRq) {
-        Announcement newAnnouncement;
-        try {
-            newAnnouncement = convertToEntity(announcementDtoRq);
-        } catch (RuntimeException e) {
-            return null;
-        }
+        Announcement newAnnouncement = convertToEntity(announcementDtoRq);
         return announcementRepository.add(newAnnouncement);
     }
 
@@ -59,8 +53,8 @@ public class AnnouncementService {
         return str;
     }
 
-    public Optional<Announcement> getAnnouncementByKey(String key) {
-        return announcementRepository.getAnnouncementByKey(key);
+    public Announcement getAnnouncementByKey(String key) {
+        return announcementRepository.getAnnouncementByKey(key).orElseThrow();
     }
 
     public List<Announcement> getAnnouncementsByFilters(Filter filter) {
