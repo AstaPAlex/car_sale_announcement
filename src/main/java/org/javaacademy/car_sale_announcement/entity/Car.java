@@ -16,11 +16,11 @@ public class Car {
     @NonNull
     private final String model;
 
-    public boolean equalsFilters(Filter car) {
-        return equalsWithNull(nameBrand, car.getNameBrand())
-                && equalsWithNull(price.toString(), car.getPrice())
-                && equalsWithNull(color.getColor(), car.getColor())
-                && equalsWithNull(model, car.getModel());
+    public boolean equalsFilters(Filter filters) {
+        return equalsWithNull(nameBrand, filters.getNameBrand())
+                && equalsWithNull(price.toString(), filters.getPrice())
+                && equalsWithNull(color.getColor(), filters.getColor())
+                && equalsWithNull(model, filters.getModel());
     }
 
     private boolean equalsWithNull(String param, String filter) {
