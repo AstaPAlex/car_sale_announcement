@@ -35,9 +35,8 @@ public class AnnouncementController {
     }
 
     @GetMapping("/date/{date}")
-    public List<Announcement> getAnnouncementByDate(@PathVariable String date) {
-        LocalDate localDate = LocalDate.parse(date);
-        return announcementService.getAnnouncementsByDate(localDate);
+    public List<Announcement> getAnnouncementByDate(@PathVariable LocalDate date) {
+        return announcementService.getAnnouncementsByDate(date);
     }
 
     @DeleteMapping("/{key}")
