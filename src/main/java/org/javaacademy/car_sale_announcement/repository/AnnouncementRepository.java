@@ -10,7 +10,7 @@ import java.util.*;
 
 @Component
 public class AnnouncementRepository {
-    Map<String, Announcement> announcements = new HashMap<>();
+    private final Map<String, Announcement> announcements = new HashMap<>();
 
     public Announcement add(Announcement announcement) {
         UUID uuid = UUID.randomUUID();

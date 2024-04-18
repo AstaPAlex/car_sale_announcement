@@ -18,23 +18,17 @@ import static org.springframework.http.HttpStatus.*;
 public class AnnouncementController {
     private final AnnouncementService announcementService;
 
-    //POST http://localhost:8003/announcement - создание нового объявления
     @PostMapping
     public ResponseEntity<?> createAnnouncement(@RequestBody AnnouncementDtoRq announcementDtoRq) {
         Announcement announcement = announcementService.createAnnouncement(announcementDtoRq);
-        //System.out.println(announcement);
-        //System.out.println(announcement.getTimePlacement().toLocalDate());
         return announcement == null
                 ? ResponseEntity.status(BAD_REQUEST).build()
                 : ResponseEntity.status(CREATED).body(announcement);
     }
 
-    //GET http://localhost:8080/book/key - получение объявления за дату
     @GetMapping("/date/{date}")
     public List<Announcement> getAnnouncementByDate(@PathVariable String date) {
-        //System.out.println(date);
         LocalDate localDate = LocalDate.parse(date);
-        System.out.println(date);
         return announcementService.getAnnouncementsByDate(localDate);
     }
 
@@ -45,14 +39,14 @@ public class AnnouncementController {
                 : ResponseEntity.status(NOT_FOUND).build();
     }
 
-/*    @GetMapping("/{filter}")
-    public List<Announcement> getAnnouncementByKeys(@RequestParam(required = false) String nameBrand,
+    @GetMapping
+    public List<Announcement> getAnnouncementByFilters(@RequestParam(required = false) String nameBrand,
                                                     @RequestParam(required = false) String color,
                                                     @RequestParam(required = false) String price,
                                                     @RequestParam(required = false) String model) {
         CarDto carDto = new CarDto(nameBrand, color, price, model);
         return announcementService.getAnnouncementsByFilters(carDto);
-    }*/
+    }
 
     @GetMapping("/key/{key}")
     public ResponseEntity<?> getAnnouncementByKey(@PathVariable String key) {

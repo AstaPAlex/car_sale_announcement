@@ -29,6 +29,6 @@ public class Car {
         if (filter == null) {
             return true;
         }
-        return Objects.equals(param, filter);
+        return param.equalsIgnoreCase(filter);
     }
 }
