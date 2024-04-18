@@ -2,11 +2,14 @@ package org.javaacademy.car_sale_announcement.repository;
 
 import org.javaacademy.car_sale_announcement.dto.CarDto;
 import org.javaacademy.car_sale_announcement.entity.Announcement;
-import org.javaacademy.car_sale_announcement.entity.Car;
 import org.springframework.stereotype.Component;
-
 import java.time.LocalDate;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Optional;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
 
 @Component
 public class AnnouncementRepository {

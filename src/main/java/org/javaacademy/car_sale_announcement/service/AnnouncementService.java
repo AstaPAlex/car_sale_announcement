@@ -20,7 +20,7 @@ public class AnnouncementService {
     public Announcement createAnnouncement(AnnouncementDtoRq announcementDtoRq) {
         Announcement newAnnouncement;
         try {
-           newAnnouncement = convertToEntity(announcementDtoRq);
+            newAnnouncement = convertToEntity(announcementDtoRq);
         } catch (RuntimeException e) {
             return null;
         }

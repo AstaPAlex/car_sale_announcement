@@ -5,12 +5,21 @@ import org.javaacademy.car_sale_announcement.dto.AnnouncementDtoRq;
 import org.javaacademy.car_sale_announcement.dto.CarDto;
 import org.javaacademy.car_sale_announcement.entity.Announcement;
 import org.javaacademy.car_sale_announcement.service.AnnouncementService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-import static org.springframework.http.HttpStatus.*;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -22,8 +31,8 @@ public class AnnouncementController {
     public ResponseEntity<?> createAnnouncement(@RequestBody AnnouncementDtoRq announcementDtoRq) {
         Announcement announcement = announcementService.createAnnouncement(announcementDtoRq);
         return announcement == null
-                ? ResponseEntity.status(BAD_REQUEST).build()
-                : ResponseEntity.status(CREATED).body(announcement);
+                ? ResponseEntity.status(HttpStatus.BAD_REQUEST).build()
+                : ResponseEntity.status(HttpStatus.CREATED).body(announcement);
     }
 
     @GetMapping("/date/{date}")
@@ -35,8 +44,8 @@ public class AnnouncementController {
     @DeleteMapping("/{key}")
     public ResponseEntity<?> deleteAnnouncement(@PathVariable String key) {
         return announcementService.deleteByKey(key)
-                ? ResponseEntity.status(ACCEPTED).build()
-                : ResponseEntity.status(NOT_FOUND).build();
+                ? ResponseEntity.status(HttpStatus.ACCEPTED).build()
+                : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
     @GetMapping
@@ -52,8 +61,8 @@ public class AnnouncementController {
     public ResponseEntity<?> getAnnouncementByKey(@PathVariable String key) {
         Optional<Announcement> announcementOpt = announcementService.getAnnouncementByKey(key);
         return announcementOpt.isPresent()
-                ? ResponseEntity.status(ACCEPTED).body(announcementOpt.get())
-                : ResponseEntity.status(NOT_FOUND).build();
+                ? ResponseEntity.status(HttpStatus.ACCEPTED).body(announcementOpt.get())
+                : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
 }

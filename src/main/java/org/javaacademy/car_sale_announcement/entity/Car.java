@@ -3,9 +3,7 @@ package org.javaacademy.car_sale_announcement.entity;
 import lombok.Data;
 import lombok.NonNull;
 import org.javaacademy.car_sale_announcement.dto.CarDto;
-
 import java.math.BigDecimal;
-import java.util.Objects;
 
 @Data
 public class Car {
