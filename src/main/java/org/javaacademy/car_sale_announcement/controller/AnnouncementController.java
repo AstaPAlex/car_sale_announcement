@@ -47,7 +47,7 @@ public class AnnouncementController {
     }
 
     @GetMapping
-    public List<Announcement> getAnnouncementByFilters(@RequestParam(required = false) String nameBrand,
+    public List<Announcement> getAnnouncementsByFilters(@RequestParam(required = false) String nameBrand,
                                                     @RequestParam(required = false) String color,
                                                     @RequestParam(required = false) String price,
                                                     @RequestParam(required = false) String model) {
