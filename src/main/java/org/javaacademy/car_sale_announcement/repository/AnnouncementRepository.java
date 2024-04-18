@@ -1,6 +1,8 @@
 package org.javaacademy.car_sale_announcement.repository;
 
+import org.javaacademy.car_sale_announcement.dto.CarDto;
 import org.javaacademy.car_sale_announcement.entity.Announcement;
+import org.javaacademy.car_sale_announcement.entity.Car;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -29,6 +31,12 @@ public class AnnouncementRepository {
 
     public Optional<Announcement> getAnnouncementByKey(String key) {
         return Optional.ofNullable(announcements.get(key));
+    }
+
+    public List<Announcement> getAnnouncementsByFilters(CarDto carDto) {
+        return announcements.values().stream()
+                .filter(announcement -> announcement.equalsCarFilters(carDto))
+                .toList();
     }
 }
 

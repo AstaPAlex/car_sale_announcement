@@ -2,6 +2,7 @@ package org.javaacademy.car_sale_announcement.service;
 
 import lombok.RequiredArgsConstructor;
 import org.javaacademy.car_sale_announcement.dto.AnnouncementDtoRq;
+import org.javaacademy.car_sale_announcement.dto.CarDto;
 import org.javaacademy.car_sale_announcement.entity.Announcement;
 import org.javaacademy.car_sale_announcement.repository.AnnouncementRepository;
 import org.springframework.stereotype.Service;
@@ -60,5 +61,9 @@ public class AnnouncementService {
 
     public Optional<Announcement> getAnnouncementByKey(String key) {
         return announcementRepository.getAnnouncementByKey(key);
+    }
+
+    public List<Announcement> getAnnouncementsByFilters(CarDto carDto) {
+        return announcementRepository.getAnnouncementsByFilters(carDto);
     }
 }
