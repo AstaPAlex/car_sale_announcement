@@ -2,7 +2,7 @@ package org.javaacademy.car_sale_announcement.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.javaacademy.car_sale_announcement.dto.AnnouncementDtoRq;
-import org.javaacademy.car_sale_announcement.dto.CarDto;
+import org.javaacademy.car_sale_announcement.entity.Filter;
 import org.javaacademy.car_sale_announcement.entity.Announcement;
 import org.javaacademy.car_sale_announcement.service.AnnouncementService;
 import org.springframework.http.HttpStatus;
@@ -52,8 +52,8 @@ public class AnnouncementController {
                                                     @RequestParam(required = false) String color,
                                                     @RequestParam(required = false) String price,
                                                     @RequestParam(required = false) String model) {
-        CarDto carDto = new CarDto(nameBrand, color, price, model);
-        return announcementService.getAnnouncementsByFilters(carDto);
+        Filter filter = new Filter(nameBrand, color, price, model);
+        return announcementService.getAnnouncementsByFilters(filter);
     }
 
     @GetMapping("/key/{key}")

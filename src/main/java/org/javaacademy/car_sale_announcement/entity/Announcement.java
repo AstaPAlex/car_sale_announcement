@@ -2,7 +2,6 @@ package org.javaacademy.car_sale_announcement.entity;
 
 import lombok.Data;
 import lombok.NonNull;
-import org.javaacademy.car_sale_announcement.dto.CarDto;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -19,7 +18,7 @@ public class Announcement {
         this.car = new Car(nameBrand, color, price, model);
     }
 
-    public boolean equalsCarFilters(CarDto carDto) {
-        return car.equalsFilters(carDto);
+    public boolean equalsCarFilters(Filter filter) {
+        return car.equalsFilters(filter);
     }
 }

@@ -2,7 +2,7 @@ package org.javaacademy.car_sale_announcement.entity;
 
 import lombok.Data;
 import lombok.NonNull;
-import org.javaacademy.car_sale_announcement.dto.CarDto;
+
 import java.math.BigDecimal;
 
 @Data
@@ -16,7 +16,7 @@ public class Car {
     @NonNull
     private final String model;
 
-    public boolean equalsFilters(CarDto car) {
+    public boolean equalsFilters(Filter car) {
         return equalsWithNull(nameBrand, car.getNameBrand())
                 && equalsWithNull(price.toString(), car.getPrice())
                 && equalsWithNull(color.getColor(), car.getColor())

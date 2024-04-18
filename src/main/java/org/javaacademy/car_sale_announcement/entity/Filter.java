@@ -1,9 +1,9 @@
-package org.javaacademy.car_sale_announcement.dto;
+package org.javaacademy.car_sale_announcement.entity;
 
 import lombok.Data;
 
 @Data
-public class CarDto {
+public class Filter {
     private final String nameBrand;
     private final String color;
     private final String price;
